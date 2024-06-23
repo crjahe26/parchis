@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsr7musoqx4yq"]
+[gd_scene load_steps=33 format=3 uid="uid://bsr7musoqx4yq"]
 
 [ext_resource type="Texture2D" uid="uid://dvjayw2tg1du2" path="res://Assets/board_sprite.jpg" id="1_bfad7"]
 
@@ -24,11 +24,81 @@ size = Vector2(178.75, 56)
 size = Vector2(170.172, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u38ab"]
-size = Vector2(115.533, 56)
+size = Vector2(113.353, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dgtqk"]
+size = Vector2(74.4139, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wop2"]
+size = Vector2(76.3932, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcmln"]
+size = Vector2(98.9142, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu4xf"]
+size = Vector2(128.074, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2rvby"]
+size = Vector2(165.831, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nrd7"]
+size = Vector2(290.249, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnrah"]
+size = Vector2(382.184, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2kg7"]
+size = Vector2(486.606, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuteb"]
+size = Vector2(4189.87, 154)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67j3w"]
+size = Vector2(56.5134, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qarbh"]
+size = Vector2(56.5132, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqebc"]
+size = Vector2(56.5134, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2fqs"]
+size = Vector2(55.5558, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ydeh"]
+size = Vector2(55.5555, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l6sel"]
+size = Vector2(156.265, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2h4w1"]
+size = Vector2(11504.4, 56.0001)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8xbnk"]
+size = Vector2(164, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buomw"]
+size = Vector2(158.046, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhed0"]
+size = Vector2(171.216, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um43q"]
+size = Vector2(165, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1ed0"]
+size = Vector2(165, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xpxe"]
+size = Vector2(179.839, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0egpk"]
+size = Vector2(172.26, 57)
 
 [node name="Main" type="Node2D"]
 
 [node name="Board" type="Sprite2D" parent="."]
+position = Vector2(-81, -10)
 scale = Vector2(1.044, 1)
 texture = ExtResource("1_bfad7")
 
@@ -53,7 +123,6 @@ scale = Vector2(0.917485, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 3"]
 position = Vector2(2.65401, -7)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_547xa")
 
 [node name="Casilla 4" type="Area2D" parent="Board"]
@@ -86,7 +155,6 @@ scale = Vector2(0.917485, 1)
 
 [node name="Area de casilla 7" type="CollisionShape2D" parent="Board/Casilla 7"]
 position = Vector2(0.522018, 3.05176e-05)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_4yuky")
 
 [node name="Casilla 8" type="Area2D" parent="Board"]
@@ -94,226 +162,425 @@ position = Vector2(151.341, 208)
 scale = Vector2(0.878817, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 8"]
-position = Vector2(-25.0684, 0)
+position = Vector2(-26.1583, -1)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u38ab")
 
 [node name="Casilla 9" type="Area2D" parent="Board"]
 position = Vector2(209.77, 159)
 scale = Vector2(0.772319, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 9"]
+position = Vector2(-3.72055, -31.5)
+shape = SubResource("RectangleShape2D_dgtqk")
+
 [node name="Casilla 10" type="Area2D" parent="Board"]
 position = Vector2(268.199, 157)
 scale = Vector2(0.73977, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 10"]
+position = Vector2(-5.82629, -0.5)
+shape = SubResource("RectangleShape2D_6wop2")
 
 [node name="Casilla 11" type="Area2D" parent="Board"]
 position = Vector2(323.755, 161)
 scale = Vector2(0.571338, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 11"]
+position = Vector2(-4.19171, -4.5)
+shape = SubResource("RectangleShape2D_vcmln")
+
 [node name="Casilla 12" type="Area2D" parent="Board"]
 position = Vector2(379.31, 158)
 scale = Vector2(0.441256, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 12"]
+position = Vector2(-1.08459, -1.5)
+shape = SubResource("RectangleShape2D_yu4xf")
 
 [node name="Casilla 13" type="Area2D" parent="Board"]
 position = Vector2(440.613, 159)
 scale = Vector2(0.34079, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 13"]
+position = Vector2(-9.8374, -2.5)
+shape = SubResource("RectangleShape2D_2rvby")
+
 [node name="Casilla 14" type="Area2D" parent="Board"]
 position = Vector2(499.042, 157)
 scale = Vector2(0.194707, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 14"]
+position = Vector2(-27.0569, -0.5)
+shape = SubResource("RectangleShape2D_8nrd7")
 
 [node name="Casilla 15" type="Area2D" parent="Board"]
 position = Vector2(551.724, 157)
 scale = Vector2(0.150376, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 15"]
+position = Vector2(0.000732422, -0.5)
+shape = SubResource("RectangleShape2D_vnrah")
+
 [node name="Casilla 16" type="Area2D" parent="Board"]
 position = Vector2(613.985, 158)
 scale = Vector2(0.116138, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 16"]
+position = Vector2(-45.3643, -1.5)
+shape = SubResource("RectangleShape2D_b2kg7")
 
 [node name="Casilla 17" type="Area2D" parent="Board"]
 position = Vector2(609.195, 2)
 scale = Vector2(0.0134881, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 17"]
+position = Vector2(-35.4805, -2)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_xuteb")
+
 [node name="Casilla 18" type="Area2D" parent="Board"]
 position = Vector2(612.069, -152)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 18"]
+position = Vector2(-3.35254, -4.5)
+shape = SubResource("RectangleShape2D_67j3w")
 
 [node name="Casilla 19" type="Area2D" parent="Board"]
 position = Vector2(552.682, -152)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 19"]
+position = Vector2(-1.43701, -4.5)
+shape = SubResource("RectangleShape2D_qarbh")
+
 [node name="Casilla 20" type="Area2D" parent="Board"]
 position = Vector2(498.084, -154)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 20"]
+position = Vector2(-4.31012, -2.5)
+shape = SubResource("RectangleShape2D_bqebc")
 
 [node name="Casilla 21" type="Area2D" parent="Board"]
 position = Vector2(435.824, -151)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 21"]
+position = Vector2(0.957703, -5.5)
+shape = SubResource("RectangleShape2D_c2fqs")
+
 [node name="Casilla 22" type="Area2D" parent="Board"]
 position = Vector2(379.31, -153)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 22"]
+position = Vector2(0.000305176, -4)
+shape = SubResource("RectangleShape2D_c2fqs")
 
 [node name="Casilla 23" type="Area2D" parent="Board"]
 position = Vector2(327.586, -153)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 23"]
+position = Vector2(-5.74692, -3.5)
+shape = SubResource("RectangleShape2D_3ydeh")
+
 [node name="Casilla 24" type="Area2D" parent="Board"]
 position = Vector2(272.031, -153)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 24"]
+position = Vector2(-7.66319, -4)
+shape = SubResource("RectangleShape2D_3ydeh")
+
 [node name="Casilla 25" type="Area2D" parent="Board"]
 position = Vector2(212.644, -151)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 25"]
+position = Vector2(-5.74745, 23)
+scale = Vector2(1.02143, 0.638103)
+shape = SubResource("RectangleShape2D_3ydeh")
 
 [node name="Casilla 26" type="Area2D" parent="Board"]
 position = Vector2(161.877, -213)
 scale = Vector2(0.957854, 1)
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Board/Casilla 26"]
+position = Vector2(-33.9996, 6)
+rotation = 1.57248
+scale = Vector2(1.02181, 0.672065)
+shape = SubResource("RectangleShape2D_3ydeh")
+
 [node name="Casilla 27" type="Area2D" parent="Board"]
 position = Vector2(160.92, -270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 27"]
+position = Vector2(-4.78974, 5.5)
+shape = SubResource("RectangleShape2D_l6sel")
 
 [node name="Casilla 28" type="Area2D" parent="Board"]
 position = Vector2(158.963, -321)
 scale = Vector2(0.917485, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 28"]
+position = Vector2(-3.08749, 0)
+scale = Vector2(1.10047, 1.02778)
+shape = SubResource("RectangleShape2D_l6sel")
+
 [node name="Casilla 29" type="Area2D" parent="Board"]
 position = Vector2(158.046, -378)
 scale = Vector2(0.957854, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 29"]
+position = Vector2(-2.00003, -1)
+scale = Vector2(1.03371, 1)
+shape = SubResource("RectangleShape2D_l6sel")
 
 [node name="Casilla 30" type="Area2D" parent="Board"]
 position = Vector2(156.967, -442)
 scale = Vector2(0.957854, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 30"]
+position = Vector2(-0.873551, 5)
+scale = Vector2(1.03774, 1)
+shape = SubResource("RectangleShape2D_l6sel")
+
 [node name="Casilla 31" type="Area2D" parent="Board"]
 position = Vector2(155.093, -493)
 scale = Vector2(0.878817, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 31"]
+position = Vector2(0.423042, -1)
+scale = Vector2(1.14815, 1)
+shape = SubResource("RectangleShape2D_l6sel")
 
 [node name="Casilla 32" type="Area2D" parent="Board"]
 position = Vector2(154.215, -550)
 scale = Vector2(0.917485, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 32"]
+position = Vector2(3.13152, -2)
+scale = Vector2(1.10002, 1)
+shape = SubResource("RectangleShape2D_l6sel")
+
 [node name="Casilla 33" type="Area2D" parent="Board"]
 position = Vector2(156.13, -614)
 scale = Vector2(0.878817, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 33"]
+position = Vector2(0.00029936, 5)
+scale = Vector2(1.13563, -1.02284)
+shape = SubResource("RectangleShape2D_l6sel")
 
 [node name="Casilla 34" type="Area2D" parent="Board"]
 position = Vector2(0.957825, -612)
 scale = Vector2(0.0134881, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 34"]
+position = Vector2(-71.0137, 3)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2h4w1")
+
 [node name="Casilla 35" type="Area2D" parent="Board"]
 position = Vector2(-156.13, -616)
 scale = Vector2(0.957854, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 35"]
+position = Vector2(-1.00027, 7)
+shape = SubResource("RectangleShape2D_8xbnk")
+
 [node name="Casilla 36" type="Area2D" parent="Board"]
 position = Vector2(-158.046, -553)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 36"]
+position = Vector2(1.43677, 1)
+shape = SubResource("RectangleShape2D_buomw")
 
 [node name="Casilla 37" type="Area2D" parent="Board"]
 position = Vector2(-159.962, -494)
 scale = Vector2(0.917485, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 37"]
+position = Vector2(4.17635, -0.5)
+shape = SubResource("RectangleShape2D_bhed0")
+
 [node name="Casilla 38" type="Area2D" parent="Board"]
 position = Vector2(-159.004, -438)
 scale = Vector2(0.957854, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 38"]
+position = Vector2(2.5002, 1)
+shape = SubResource("RectangleShape2D_um43q")
 
 [node name="Casilla 39" type="Area2D" parent="Board"]
 position = Vector2(-153.257, -379)
 scale = Vector2(0.957854, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 39"]
+position = Vector2(-3.49966, -0.5)
+shape = SubResource("RectangleShape2D_l1ed0")
+
 [node name="Casilla 40" type="Area2D" parent="Board"]
 position = Vector2(-155.172, -319)
 scale = Vector2(0.878817, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 40"]
+position = Vector2(-1.63538, -3)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_1xpxe")
 
 [node name="Casilla 41" type="Area2D" parent="Board"]
 position = Vector2(-155.172, -267)
 scale = Vector2(0.917485, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 41"]
+position = Vector2(-1.56644, 2.5)
+shape = SubResource("RectangleShape2D_0egpk")
+
 [node name="Casilla 42" type="Area2D" parent="Board"]
 position = Vector2(-155.172, -213)
 scale = Vector2(0.878817, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 42"]
+
 [node name="Casilla 43" type="Area2D" parent="Board"]
 position = Vector2(-203.065, -158)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 43"]
 
 [node name="Casilla 44" type="Area2D" parent="Board"]
 position = Vector2(-262.452, -158)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 44"]
+
 [node name="Casilla 45" type="Area2D" parent="Board"]
 position = Vector2(-317.05, -160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 45"]
 
 [node name="Casilla 46" type="Area2D" parent="Board"]
 position = Vector2(-379.31, -157)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 46"]
+
 [node name="Casilla 47" type="Area2D" parent="Board"]
 position = Vector2(-435.824, -159)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 47"]
 
 [node name="Casilla 48" type="Area2D" parent="Board"]
 position = Vector2(-487.548, -159)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 48"]
+
 [node name="Casilla 49" type="Area2D" parent="Board"]
 position = Vector2(-543.103, -159)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 49"]
+
 [node name="Casilla 50" type="Area2D" parent="Board"]
 position = Vector2(-602.49, -157)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 50"]
 
 [node name="Casilla 51" type="Area2D" parent="Board"]
 position = Vector2(-612.069, 1)
 scale = Vector2(0.0134881, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 51"]
+
 [node name="Casilla 52" type="Area2D" parent="Board"]
 position = Vector2(-611.111, 153)
 scale = Vector2(0.772319, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 52"]
 
 [node name="Casilla 53" type="Area2D" parent="Board"]
 position = Vector2(-552.682, 151)
 scale = Vector2(0.73977, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 53"]
+
 [node name="Casilla 54" type="Area2D" parent="Board"]
 position = Vector2(-497.126, 155)
 scale = Vector2(0.571338, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 54"]
 
 [node name="Casilla 55" type="Area2D" parent="Board"]
 position = Vector2(-441.571, 152)
 scale = Vector2(0.441256, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 55"]
+
 [node name="Casilla 56" type="Area2D" parent="Board"]
 position = Vector2(-380.268, 153)
 scale = Vector2(0.34079, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 56"]
 
 [node name="Casilla 57" type="Area2D" parent="Board"]
 position = Vector2(-321.839, 151)
 scale = Vector2(0.194707, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 57"]
+
 [node name="Casilla 58" type="Area2D" parent="Board"]
 position = Vector2(-269.157, 151)
 scale = Vector2(0.150376, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 58"]
 
 [node name="Casilla 59" type="Area2D" parent="Board"]
 position = Vector2(-206.897, 152)
 scale = Vector2(0.116138, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 59"]
+
 [node name="Casilla 60" type="Area2D" parent="Board"]
 position = Vector2(-152.299, 204)
 scale = Vector2(0.957854, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 60"]
+
 [node name="Casilla 61" type="Area2D" parent="Board"]
 position = Vector2(-154.215, 267)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 61"]
 
 [node name="Casilla 62" type="Area2D" parent="Board"]
 position = Vector2(-156.13, 326)
 scale = Vector2(0.917485, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 62"]
+
 [node name="Casilla 63" type="Area2D" parent="Board"]
 position = Vector2(-155.172, 382)
 scale = Vector2(0.957854, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 63"]
 
 [node name="Casilla 64" type="Area2D" parent="Board"]
 position = Vector2(-149.425, 441)
 scale = Vector2(0.957854, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 64"]
+
 [node name="Casilla 65" type="Area2D" parent="Board"]
 position = Vector2(-151.341, 501)
 scale = Vector2(0.878817, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 65"]
 
 [node name="Casilla 66" type="Area2D" parent="Board"]
 position = Vector2(-151.341, 553)
 scale = Vector2(0.917485, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 66"]
+
 [node name="Casilla 67" type="Area2D" parent="Board"]
 position = Vector2(-151.341, 607)
 scale = Vector2(0.878817, 1)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 67"]
+
 [node name="Casilla 68" type="Area2D" parent="Board"]
 position = Vector2(0.957855, 610)
 scale = Vector2(0.878817, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 68"]
