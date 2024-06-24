@@ -1,1 +1,3 @@
 res://Scenes/main.tscn
+res://Scripts/Token.gd
+res://Scripts/Main.gd

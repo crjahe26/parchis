@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4gp031invqfb"]
+
+[ext_resource type="Texture2D" uid="uid://cbc10dvwvvu2g" path="res://Assets/RedToken.jpg" id="1_dwav5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h58nv"]
+radius = 74.0
+height = 272.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Token" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Token"]
+texture = ExtResource("1_dwav5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Token/Sprite2D"]
+position = Vector2(3, 3)
+shape = SubResource("CapsuleShape2D_h58nv")

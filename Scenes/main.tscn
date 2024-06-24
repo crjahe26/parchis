@@ -183,83 +183,82 @@ position = Vector2(-81, -10)
 scale = Vector2(1.044, 1)
 texture = ExtResource("1_bfad7")
 
-[node name="Casilla 1" type="Area2D" parent="Board"]
+[node name="Casilla1" type="Area2D" parent="Board"]
 position = Vector2(157.088, 609)
 scale = Vector2(0.957854, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla1"]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_7s581")
 
-[node name="Casilla 2" type="Area2D" parent="Board"]
+[node name="Casilla2" type="Area2D" parent="Board"]
 position = Vector2(156.13, 552)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla2"]
 position = Vector2(0.478928, 0)
 shape = SubResource("RectangleShape2D_yguy1")
 
-[node name="Casilla 3" type="Area2D" parent="Board"]
+[node name="Casilla3" type="Area2D" parent="Board"]
 position = Vector2(154.174, 501)
 scale = Vector2(0.917485, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla3"]
 position = Vector2(2.65401, -7)
 shape = SubResource("RectangleShape2D_547xa")
 
-[node name="Casilla 4" type="Area2D" parent="Board"]
+[node name="Casilla4" type="Area2D" parent="Board"]
 position = Vector2(153.257, 444)
 scale = Vector2(0.957854, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla4"]
 position = Vector2(3, -7.5)
 shape = SubResource("RectangleShape2D_u8it5")
 
-[node name="Casilla 5" type="Area2D" parent="Board"]
+[node name="Casilla5" type="Area2D" parent="Board"]
 position = Vector2(152.178, 380)
 scale = Vector2(0.957854, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla5"]
 position = Vector2(4.62643, -1)
 shape = SubResource("RectangleShape2D_tek8x")
 
-[node name="Casilla 6" type="Area2D" parent="Board"]
+[node name="Casilla6" type="Area2D" parent="Board"]
 position = Vector2(150.304, 329)
 scale = Vector2(0.878817, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla6"]
 position = Vector2(6.62958, -7)
 shape = SubResource("RectangleShape2D_146ft")
 
-[node name="Casilla 7" type="Area2D" parent="Board"]
+[node name="Casilla7" type="Area2D" parent="Board"]
 position = Vector2(156.13, 264)
 scale = Vector2(0.917485, 1)
 
-[node name="Area de casilla 7" type="CollisionShape2D" parent="Board/Casilla 7"]
+[node name="Area de casilla 7" type="CollisionShape2D" parent="Board/Casilla7"]
 position = Vector2(0.522018, 3.05176e-05)
 shape = SubResource("RectangleShape2D_4yuky")
 
-[node name="Casilla 8" type="Area2D" parent="Board"]
+[node name="Casilla8" type="Area2D" parent="Board"]
 position = Vector2(151.341, 208)
 scale = Vector2(0.878817, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla8"]
 position = Vector2(-26.1583, -1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_u38ab")
 
-[node name="Casilla 9" type="Area2D" parent="Board"]
+[node name="Casilla9" type="Area2D" parent="Board"]
 position = Vector2(209.77, 159)
 scale = Vector2(0.772319, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla9"]
 position = Vector2(-3.72055, -31.5)
 shape = SubResource("RectangleShape2D_dgtqk")
 
-[node name="Casilla 10" type="Area2D" parent="Board"]
+[node name="Casilla10" type="Area2D" parent="Board"]
 position = Vector2(268.199, 157)
 scale = Vector2(0.73977, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla10"]
 position = Vector2(-5.82629, -0.5)
 shape = SubResource("RectangleShape2D_6wop2")
 
@@ -317,7 +316,6 @@ scale = Vector2(0.0134881, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 17"]
 position = Vector2(-35.4805, -2)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_xuteb")
 
 [node name="Casilla 18" type="Area2D" parent="Board"]
@@ -454,7 +452,6 @@ scale = Vector2(0.0134881, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 34"]
 position = Vector2(-71.0137, 3)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2h4w1")
 
 [node name="Casilla 35" type="Area2D" parent="Board"]
@@ -502,7 +499,6 @@ scale = Vector2(0.878817, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 40"]
 position = Vector2(-1.63538, -3)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_1xpxe")
 
 [node name="Casilla 41" type="Area2D" parent="Board"]
@@ -519,7 +515,6 @@ scale = Vector2(0.878817, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 42"]
 position = Vector2(31.6076, 6)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_hb11m")
 
 [node name="Casilla 43" type="Area2D" parent="Board"]
@@ -584,7 +579,6 @@ scale = Vector2(0.0134881, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 51"]
 position = Vector2(248.551, -0.999998)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_v04xc")
 
 [node name="Casilla 52" type="Area2D" parent="Board"]
@@ -696,7 +690,6 @@ scale = Vector2(0.878817, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 65"]
 position = Vector2(-5.99463, -7)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8kdis")
 
 [node name="Casilla 66" type="Area2D" parent="Board"]
@@ -713,7 +706,6 @@ scale = Vector2(0.878817, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 67"]
 position = Vector2(-5.99466, 1.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2cvdq")
 
 [node name="Casilla 68" type="Area2D" parent="Board"]
@@ -722,5 +714,4 @@ scale = Vector2(0.878817, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Board/Casilla 68"]
 position = Vector2(-1.0899, -1)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_holam")

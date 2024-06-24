@@ -1,7 +1,9 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1719161154
+::res://::1719189747
 icon.svg::CompressedTexture2D::5991149476848441904::1719153681::1719153687::1::::<><>::
-::res://Assets/::1719161154
+::res://Assets/::1719190120
 board_sprite.jpg::CompressedTexture2D::8651851224413978271::1719155405::1719161154::1::::<><>::
-::res://Scenes/::1719161154
-main.tscn::PackedScene::3686879743223983788::1719161154::0::1::::<><>::uid://dvjayw2tg1du2::::res://Assets/board_sprite.jpg
+RedToken.jpg::CompressedTexture2D::4848782444231339492::1719190120::1719190127::1::::<><>::
+Tokens.jpg::CompressedTexture2D::8512804182759276055::1719190066::1719190127::1::::<><>::
+::res://Scenes/::1719168650
+main.tscn::PackedScene::3686879743223983788::1719168650::0::1::::<><>::uid://dvjayw2tg1du2::::res://Assets/board_sprite.jpg
