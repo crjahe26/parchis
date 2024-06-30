@@ -1,1 +1,5 @@
-res://Scenes/main.tscn
+res://Scenes/Board.tscn
+res://Scenes/Main.tscn
+res://Scenes/Token.tscn
+res://Scripts/Token.gd
+res://Scripts/Board.gd

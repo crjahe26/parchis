@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxym00aen72k"]
+
+[ext_resource type="Texture2D" uid="uid://dphck3t0gcab5" path="res://Assets/circulo_verde.png" id="1_5yoq7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qxpr5"]
+radius = 19.6469
+
+[node name="Token" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.124996, 0.124996)
+scale = Vector2(0.0776367, 0.0776367)
+texture = ExtResource("1_5yoq7")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qxpr5")
