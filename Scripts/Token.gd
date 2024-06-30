@@ -1,7 +1,16 @@
 extends Node2D
+@export var color: String
+signal token_selected
 
 var current_position = 0
 var path = []
+
+var start_positions = {
+	"yellow": 4,
+	"blue": 21,
+	"red": 38,
+	"green": 55
+}
 
 func _ready():
 	path = [
@@ -75,10 +84,11 @@ func _ready():
 		$"/root/Node2D/Board/Square68"
 	]
 	$Area2D.connect("input_event", Callable(self, "_on_Area2D_input_event"))
+	current_position = start_positions[color]
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		move_steps(roll_dice())
+		emit_signal("token_selected", self)
 
 func move_to_position(new_position):
 	current_position = new_position
@@ -88,6 +98,3 @@ func move_steps(steps):
 	var target_position = current_position + steps
 	if target_position < path.size():
 		move_to_position(target_position)
-
-func roll_dice():
-	return randi() % 6 + 1  # Devuelve un número entre 1 y 6
