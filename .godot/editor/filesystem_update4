@@ -1,11 +1,11 @@
-res://Scenes/Board.tscn
-res://Scripts/Board.gd
-res://Scripts/Token.gd
 res://Scenes/Main.tscn
+res://Scripts/Board.gd
+res://Scenes/Board.tscn
 res://Scenes/Token.tscn
 res://Scenes/TokenBlue.tscn
 res://Scenes/TokenGreen.tscn
 res://Scenes/TokenRed.tscn
 res://Scenes/TokenYellow.tscn
-res://Scripts/Dice.gd
 res://Scenes/Dice.tscn
+res://Scripts/Token.gd
+res://Scripts/Dice.gd

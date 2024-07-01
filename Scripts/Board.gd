@@ -37,8 +37,37 @@ func roll_dice():
 func _on_token_selected(token):
 	if token.color == get_current_player_color():
 		var steps = roll_dice()
-		token.move_steps(steps)
+		var dice_values = dice.get_dice_values()
+		var dice_value1 = dice_values[0]
+		var dice_value2 = dice_values[1]
+		print("dice_values: ", dice_values, " dice_value1: ", dice_value1, " dice_value2: ", dice_value2)
+		if (dice_value1 == 1 and dice_value2 == 6) or (dice_value1 == 6 and dice_value2 == 1):
+			release_all_tokens_from_jail(token.color)
+		elif dice_value1 == dice_value2:
+			handle_double_roll(token, steps)
+		else:
+			handle_regular_roll(token, steps)
 		next_turn()
+
+func release_all_tokens_from_jail(color):
+	for token in tokens:
+		if token.color == color and token.is_in_jail():
+			token.release_from_jail()
+
+func handle_double_roll(token, steps):
+	if token.is_in_jail():
+		token.release_from_jail()
+	else:
+		token.move_steps(steps)
+
+func handle_regular_roll(token, steps):
+	if token.is_in_jail():
+		# Manejar el caso cuando la ficha está en la cárcel
+		# Si está en la cárcel, el jugador no puede mover la ficha
+		next_turn()
+		return
+	else:
+		token.move_steps(steps)
 
 func get_current_player_color():
 	if current_player < 4:

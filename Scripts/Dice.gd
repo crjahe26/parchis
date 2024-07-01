@@ -20,3 +20,6 @@ func roll():
 func update_dice_faces():
 	$Dice1.texture = dice_sides[dice_value_1 - 1]
 	$Dice2.texture = dice_sides[dice_value_2 - 1]
+
+func get_dice_values():
+	return [dice_value_1, dice_value_2]

@@ -4,6 +4,7 @@ signal token_selected
 
 var current_position = 0
 var path = []
+var in_jail = true
 
 var start_positions = {
 	"yellow": 4,
@@ -94,7 +95,14 @@ func move_to_position(new_position):
 	current_position = new_position
 	global_position = path[current_position].global_position
 
-func move_steps(steps):
+func move_steps(steps): # A partir de esta función se puede implementar el camino al cielo
 	var target_position = current_position + steps
 	if target_position < path.size():
 		move_to_position(target_position)
+
+func release_from_jail():
+	in_jail = false
+	move_to_position(start_positions[color])
+
+func is_in_jail():
+	return in_jail
