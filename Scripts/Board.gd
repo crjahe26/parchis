@@ -2,6 +2,7 @@ extends Node2D
 
 var current_player = 0
 var tokens = []
+@onready var dice = $Dice  # Cambia "$Dice" si usaste otro nombre para el nodo de dados
 
 func _ready():
 	tokens = [
@@ -29,9 +30,9 @@ func next_turn():
 	current_player = (current_player + 1) % tokens.size()
 
 func roll_dice():
-	var dice_value = randi() % 6 + 1
-	$DiceValueLabel2.text = "Dado: " + str(dice_value)
-	return dice_value
+	var dice_roll = dice.roll()
+	$DiceValueLabel2.text = "Dado: " + str(dice_roll)  # Ajusta esto si cambiaste el nombre del Label
+	return dice_roll
 
 func _on_token_selected(token):
 	if token.color == get_current_player_color():

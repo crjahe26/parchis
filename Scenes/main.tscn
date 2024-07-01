@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://t4xismwtu0k2"]
+[gd_scene load_steps=9 format=3 uid="uid://t4xismwtu0k2"]
 
 [ext_resource type="PackedScene" uid="uid://uqxxwdc2dcve" path="res://Scenes/Board.tscn" id="1_y6whl"]
 [ext_resource type="PackedScene" uid="uid://gqjs2yhnudqb" path="res://Scenes/TokenBlue.tscn" id="4_ho6wj"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://difb4cv85lcbh" path="res://Scenes/TokenGreen.tscn" id="5_o1cof"]
 [ext_resource type="PackedScene" uid="uid://c0mvqgfasvqq5" path="res://Scenes/TokenRed.tscn" id="6_78vi8"]
 [ext_resource type="PackedScene" uid="uid://c06sc4gn3gjm4" path="res://Scenes/TokenYellow.tscn" id="6_wo2tq"]
+[ext_resource type="PackedScene" uid="uid://dyxt0lrtxp000" path="res://Scenes/Dice.tscn" id="7_yxp8k"]
+[ext_resource type="Script" path="res://Scripts/Dice.gd" id="8_e6pnf"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -108,7 +110,10 @@ color = "yellow"
 metadata/color = "yellow"
 
 [node name="DiceValueLabel2" type="Label" parent="Board"]
-offset_left = -142.0
-offset_top = -224.0
-offset_right = -102.0
-offset_bottom = -201.0
+offset_left = -149.0
+offset_top = -225.0
+offset_right = -109.0
+offset_bottom = -202.0
+
+[node name="Dice" parent="Board" instance=ExtResource("7_yxp8k")]
+script = ExtResource("8_e6pnf")

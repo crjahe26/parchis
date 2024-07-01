@@ -7,3 +7,5 @@ res://Scenes/TokenBlue.tscn
 res://Scenes/TokenGreen.tscn
 res://Scenes/TokenRed.tscn
 res://Scenes/TokenYellow.tscn
+res://Scripts/Dice.gd
+res://Scenes/Dice.tscn
