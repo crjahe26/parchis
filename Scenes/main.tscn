@@ -117,3 +117,9 @@ offset_bottom = -202.0
 
 [node name="Dice" parent="Board" instance=ExtResource("7_yxp8k")]
 script = ExtResource("8_e6pnf")
+
+[node name="TurnLabel" type="Label" parent="Board"]
+offset_left = -189.0
+offset_top = -268.0
+offset_right = -69.0
+offset_bottom = -245.0
