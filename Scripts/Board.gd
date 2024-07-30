@@ -2,9 +2,15 @@ extends Node2D
 
 var current_player = 0
 var tokens = []
-@onready var dice = $Dice  # Cambia "$Dice" si usaste otro nombre para el nodo de dados
+@onready var dice = $Dice
 @onready var dice_value_label = $DiceValueLabel2
 @onready var turn_label = $TurnLabel
+@onready var confirmation_dialog = $ConfirmationDialog
+
+var pending_steps = 0
+var pending_token = null
+var pending_target_token = null
+var remaining_steps = 0
 
 func _ready():
 	tokens = [
@@ -28,15 +34,15 @@ func _ready():
 	for token in tokens:
 		token.connect("token_selected", Callable(self, "_on_token_selected"))
 
-		update_turn_label()
+	update_turn_label()
 
 func next_turn():
-	current_player = (current_player + 1) % tokens.size()
+	current_player = (current_player + 1) % 4
 	update_turn_label()
 
 func roll_dice():
 	var dice_roll = dice.roll()
-	$DiceValueLabel2.text = "Dado: " + str(dice_roll)  # Ajusta esto si cambiaste el nombre del Label
+	dice_value_label.text = "Dado: " + str(dice_roll)
 	return dice_roll
 
 func _on_token_selected(token):
@@ -47,39 +53,63 @@ func _on_token_selected(token):
 		var dice_value2 = dice_values[1]
 		print("dice_values: ", dice_values, " dice_value1: ", dice_value1, " dice_value2: ", dice_value2)
 		if (dice_value1 == 1 and dice_value2 == 6) or (dice_value1 == 6 and dice_value2 == 1):
-			release_all_tokens_from_jail(token.color)
+			release_token_from_jail(token.color)
 		elif dice_value1 == dice_value2:
 			handle_double_roll(token, steps)
 		else:
 			handle_regular_roll(token, steps)
 		next_turn()
 
-func release_all_tokens_from_jail(color):
+func release_token_from_jail(color):
 	for token in tokens:
 		if token.color == color and token.is_in_jail():
 			token.release_from_jail()
+			break
 
 func handle_double_roll(token, steps):
 	if token.is_in_jail():
 		token.release_from_jail()
 	else:
-		token.move_steps(steps)
+		handle_regular_roll(token, steps)
 
 func handle_regular_roll(token, steps):
 	if token.is_in_jail():
-		# Manejar el caso cuando la ficha está en la cárcel
-		# Si está en la cárcel, el jugador no puede mover la ficha
-		next_turn()
 		return
 	else:
-		token.move_steps(steps)
+		var target_position = calculate_target_position(token, steps)
+		if is_safe_square(target_position):
+			token.move_steps(steps)
+		else:
+			var target_token = get_token_at_position(target_position)
+			if target_token != null and target_token.color != token.color:
+				ask_to_eat_token(token, target_token, steps)
+			else:
+				token.move_steps(steps)
+
+func calculate_target_position(token, steps):
+	var new_position = token.current_position + steps
+	var max_position = get_max_position_for_color(token.color)
+	if new_position > max_position:
+		new_position -= max_position + 1
+	return new_position
+
+func get_max_position_for_color(color):
+	if color == "yellow":
+		return 68
+	elif color == "blue":
+		return 17
+	elif color == "red":
+		return 34
+	elif color == "green":
+		return 51
+	return 68
 
 func get_current_player_color():
-	if current_player < 4:
+	if current_player == 0:
 		return "yellow"
-	elif current_player < 8:
+	elif current_player == 1:
 		return "blue"
-	elif current_player < 12:
+	elif current_player == 2:
 		return "red"
 	else:
 		return "green"
@@ -87,3 +117,46 @@ func get_current_player_color():
 func update_turn_label():
 	var player_color = get_current_player_color()
 	turn_label.text = "Turno de: " + player_color.capitalize()
+
+func is_safe_square(position):
+	var safe_squares = [4, 12, 20, 28, 36, 44, 52, 60]
+	return position in safe_squares
+
+func get_token_at_position(position):
+	for token in tokens:
+		if token.current_position == position:
+			return token
+	return null
+
+func ask_to_eat_token(player_token, target_token, steps):
+	pending_steps = steps
+	pending_token = player_token
+	pending_target_token = target_token
+	confirmation_dialog.popup_centered()
+
+func _on_ConfirmationDialog_confirmed():
+	if pending_target_token != null:
+		pending_target_token.send_to_jail()
+		pending_token.move_to_position(pending_target_token.current_position)
+		remaining_steps = pending_steps - pending_steps
+		allow_move_remaining_steps(pending_token.color, remaining_steps)
+	clear_pending_actions()
+
+func _on_ConfirmationDialog_canceled():
+	pending_token.move_steps(pending_steps)
+	clear_pending_actions()
+
+func clear_pending_actions():
+	pending_steps = 0
+	pending_token = null
+	pending_target_token = null
+
+func allow_move_remaining_steps(color, remaining_steps):
+	dice_value_label.text = "Pasos restantes: " + str(remaining_steps)
+	# Aquí esperaremos a que el jugador seleccione otra ficha para mover con los pasos restantes
+	# Es posible que desees implementar algún mecanismo de tiempo de espera o límite de selección
+
+# Método para mover la ficha a una posición específica
+func move_to_position(token, position):
+	token.current_position = position
+	# Añade la lógica para actualizar visualmente la posición de la ficha si es necesario

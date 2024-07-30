@@ -1,9 +1,10 @@
+res://Scenes/TokenRed.tscn
 res://Scripts/Board.gd
+res://Scripts/Token.gd
+res://Scenes/Main.tscn
 res://Scenes/Board.tscn
 res://Scenes/Token.tscn
 res://Scenes/TokenBlue.tscn
 res://Scenes/TokenGreen.tscn
-res://Scenes/TokenRed.tscn
 res://Scenes/TokenYellow.tscn
 res://Scenes/Dice.tscn
-res://Scenes/Main.tscn

@@ -1,4 +1,5 @@
 extends Node2D
+
 @export var color: String
 signal token_selected
 
@@ -95,7 +96,7 @@ func move_to_position(new_position):
 	current_position = new_position
 	global_position = path[current_position].global_position
 
-func move_steps(steps): # A partir de esta función se puede implementar el camino al cielo
+func move_steps(steps):
 	var target_position = current_position + steps
 	if target_position < path.size():
 		move_to_position(target_position)
@@ -106,3 +107,8 @@ func release_from_jail():
 
 func is_in_jail():
 	return in_jail
+
+func send_to_jail():
+	in_jail = true
+	current_position = 0  # Ajusta esto si tienes una posición específica para la cárcel
+	move_to_position(current_position)
