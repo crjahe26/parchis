@@ -457,3 +457,27 @@ position = Vector2(-128, 359)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Square68"]
 shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="JailYellow" type="Area2D" parent="."]
+position = Vector2(224, 221)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JailYellow"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="JailBlue" type="Area2D" parent="."]
+position = Vector2(228, -481)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JailBlue"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="JailRed" type="Area2D" parent="."]
+position = Vector2(-476, -480)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JailRed"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="JailGreen" type="Area2D" parent="."]
+position = Vector2(-477, 221)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JailGreen"]
+shape = SubResource("RectangleShape2D_2ddmn")

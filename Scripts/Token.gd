@@ -8,10 +8,17 @@ var path = []
 var in_jail = true
 
 var start_positions = {
-	"yellow": 4,
-	"blue": 21,
-	"red": 38,
-	"green": 55
+	"yellow": 5,
+	"blue": 22,
+	"red": 39,
+	"green": 56
+}
+
+var jail_nodes = {
+	"yellow": "/root/Node2D/Board/JailYellow",
+	"blue": "/root/Node2D/Board/JailBlue",
+	"red": "/root/Node2D/Board/JailRed",
+	"green": "/root/Node2D/Board/JailGreen"
 }
 
 func _ready():
@@ -94,11 +101,13 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 
 func move_to_position(new_position):
 	current_position = new_position
-	global_position = path[current_position].global_position
+	global_position = path[current_position - 1].global_position
+	print("Ficha movida a la posición: ", current_position, " (global_position: ", global_position, ")")  # depuración
 
 func move_steps(steps):
 	var target_position = current_position + steps
 	if target_position < path.size():
+		print("Moviendo de ", current_position, " a ", target_position) # Depuración
 		move_to_position(target_position)
 
 func release_from_jail():
@@ -110,5 +119,15 @@ func is_in_jail():
 
 func send_to_jail():
 	in_jail = true
-	current_position = 0  # Ajusta esto si tienes una posición específica para la cárcel
-	move_to_position(current_position)
+	var jail_node = get_node(jail_nodes[color])
+	global_position = jail_node.global_position
+	#in_jail = true
+	#current_position = jail_positions[color]
+	#move_to_position(current_position)
+	print("Ficha enviada a la cárcel: ", color, " en posición: ", global_position)  # Depuración
+
+func check_collision():
+	for token in get_tree().get_nodes_in_group("tokens"):
+		if token != self and not token.is_in_jail() and token.current_position == self.current_position:
+			print("Ficha ", color, " ha comido a ficha ", token.color)
+			token.send_to_jail()

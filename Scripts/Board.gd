@@ -34,6 +34,10 @@ func _ready():
 	for token in tokens:
 		token.connect("token_selected", Callable(self, "_on_token_selected"))
 
+	# Conectar los eventos del diálogo de confirmación
+	confirmation_dialog.connect("confirmed", Callable(self, "_on_ConfirmationDialog_confirmed"))
+	confirmation_dialog.connect("canceled", Callable(self, "_on_ConfirmationDialog_canceled"))
+
 	update_turn_label()
 
 func next_turn():
@@ -52,9 +56,9 @@ func _on_token_selected(token):
 		var dice_value1 = dice_values[0]
 		var dice_value2 = dice_values[1]
 		print("dice_values: ", dice_values, " dice_value1: ", dice_value1, " dice_value2: ", dice_value2)
-		if (dice_value1 == 1 and dice_value2 == 6) or (dice_value1 == 6 and dice_value2 == 1):
-			release_token_from_jail(token.color)
-		elif dice_value1 == dice_value2:
+		#if (dice_value1 == 1 and dice_value2 == 6) or (dice_value1 == 6 and dice_value2 == 1):
+		#	release_token_from_jail(token.color)
+		if dice_value1 == dice_value2:
 			handle_double_roll(token, steps)
 		else:
 			handle_regular_roll(token, steps)
@@ -87,10 +91,12 @@ func handle_regular_roll(token, steps):
 				token.move_steps(steps)
 
 func calculate_target_position(token, steps):
+	print("calculating target position")
 	var new_position = token.current_position + steps
+	print("new_position is: ", new_position)
 	var max_position = get_max_position_for_color(token.color)
-	if new_position > max_position:
-		new_position -= max_position + 1
+	#if new_position > max_position:
+	#	new_position -= max_position + 1 Esto evita que se pueda comer las fichas porque en general al ir dando la vuelta al tablero el valor de new_position, siempre va a ser mayor al valor de max_position, hay que buscar otra forma de identificar cuando una ficha ya dió la vuelta completa para iniciar su camino al cielo.
 	return new_position
 
 func get_max_position_for_color(color):
@@ -119,11 +125,12 @@ func update_turn_label():
 	turn_label.text = "Turno de: " + player_color.capitalize()
 
 func is_safe_square(position):
-	var safe_squares = [4, 12, 20, 28, 36, 44, 52, 60]
+	var safe_squares = [5, 12, 17, 22, 29, 34, 39, 46, 51, 56, 63, 68]
 	return position in safe_squares
 
 func get_token_at_position(position):
 	for token in tokens:
+		print("Token: ", token, "Position", token.current_position, "position", position)
 		if token.current_position == position:
 			return token
 	return null
@@ -137,10 +144,13 @@ func ask_to_eat_token(player_token, target_token, steps):
 func _on_ConfirmationDialog_confirmed():
 	if pending_target_token != null:
 		pending_target_token.send_to_jail()
+		print("Token sent to jail: ", pending_target_token.color)  # Depuración
 		pending_token.move_to_position(pending_target_token.current_position)
+		print("Token moved to position: ", pending_target_token.current_position)  # Depuración
 		remaining_steps = pending_steps - pending_steps
 		allow_move_remaining_steps(pending_token.color, remaining_steps)
 	clear_pending_actions()
+
 
 func _on_ConfirmationDialog_canceled():
 	pending_token.move_steps(pending_steps)
