@@ -6,6 +6,7 @@ signal token_selected
 var current_position = 0
 var path = []
 var in_jail = true
+var in_heaven = false
 
 var start_positions = {
 	"yellow": 5,
@@ -57,11 +58,6 @@ func _ready():
 		get_node("/root/Node2D/Board/heaven_green_6"),
 	]
 
-	# Imprimir para verificar
-	for color in heaven_paths:
-		for i in range(heaven_paths[color].size()):
-			if heaven_paths[color][i] == null:
-				print("Nodo del cielo para ", color, " en la posición ", i, " es null")
 	path = [
 		$"/root/Node2D/Board/Square1",
 		$"/root/Node2D/Board/Square2",
@@ -141,15 +137,23 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 
 func move_to_position(new_position):
 	current_position = new_position
-	global_position = path[current_position - 1].global_position
+	if in_heaven:
+		global_position = heaven_paths[color][current_position - 1].global_position
+	else:
+		global_position = path[current_position - 1].global_position
 	print("Ficha movida a la posición: ", current_position, " (global_position: ", global_position, ")")  # depuración
 
+
 func move_steps(steps):
+	if in_heaven:
+		move_to_heaven(steps)
+		return
+
 	var initial_position = current_position
 	var target_position = calculate_target_position(initial_position, steps)
 
 	# Si el objetivo está dentro del tablero normal
-	if target_position <= 68 and initial_position <= get_heaven_start_position(color):
+	if target_position <= 68:
 		for i in range(steps):
 			current_position += 1
 			if current_position > 68:
@@ -161,6 +165,8 @@ func move_steps(steps):
 			# Si alcanzamos la posición para subir al cielo
 			if current_position == get_heaven_start_position(color):
 				var remaining_steps = steps - (i + 1)
+				in_heaven = true  # Marcamos la ficha como en el cielo
+				current_position = 0  # Reiniciamos current_position para usarla en el cielo
 				move_to_heaven(remaining_steps)
 				return
 	else:
@@ -176,6 +182,8 @@ func move_steps(steps):
 
 		var remaining_steps = steps - normal_steps
 		if remaining_steps > 0:
+			in_heaven = true  # Marcamos la ficha como en el cielo
+			current_position = 0  # Reiniciamos current_position para usarla en el cielo
 			move_to_heaven(remaining_steps)
 
 func calculate_target_position(initial_position, steps):
@@ -211,9 +219,9 @@ func move_to_heaven(steps):
 		print("No se encontraron nodos para el cielo del color: ", color)
 		return
 
-	var heaven_position = 0
+	var heaven_position = current_position  # Comenzamos desde la posición actual en el cielo
 
-	for i in range(min(steps, path_heaven.size())):
+	for i in range(min(steps, path_heaven.size() - heaven_position)):
 		await get_tree().create_timer(0.5).timeout
 		heaven_position += 1
 
@@ -227,8 +235,10 @@ func move_to_heaven(steps):
 
 		if heaven_position == path_heaven.size():
 			print("¡Ficha ha ganado!")
-			queue_free()  # Eliminar la ficha del tablero
 			return
+
+	current_position = heaven_position  # Actualizar la posición actual en el cielo
+
 
 
 
@@ -236,6 +246,7 @@ func move_to_heaven(steps):
 
 func release_from_jail():
 	in_jail = false
+	in_heaven = false
 	move_to_position(start_positions[color])
 
 func is_in_jail():
@@ -243,6 +254,7 @@ func is_in_jail():
 
 func send_to_jail():
 	in_jail = true
+	in_heaven = false 
 	var jail_node = get_node(jail_nodes[color])
 	global_position = jail_node.global_position
 	#in_jail = true
