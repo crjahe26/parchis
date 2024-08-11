@@ -21,7 +21,47 @@ var jail_nodes = {
 	"green": "/root/Node2D/Board/JailGreen"
 }
 
+var heaven_paths = {}
+
 func _ready():
+	heaven_paths["yellow"] = [
+		get_node("/root/Node2D/Board/heaven_yellow_1"),
+		get_node("/root/Node2D/Board/heaven_yellow_2"),
+		get_node("/root/Node2D/Board/heaven_yellow_3"),
+		get_node("/root/Node2D/Board/heaven_yellow_4"),
+		get_node("/root/Node2D/Board/heaven_yellow_5"),
+		get_node("/root/Node2D/Board/heaven_yellow_6"),
+	]
+	heaven_paths["blue"] = [
+		get_node("/root/Node2D/Board/heaven_blue_1"),
+		get_node("/root/Node2D/Board/heaven_blue_2"),
+		get_node("/root/Node2D/Board/heaven_blue_3"),
+		get_node("/root/Node2D/Board/heaven_blue_4"),
+		get_node("/root/Node2D/Board/heaven_blue_5"),
+		get_node("/root/Node2D/Board/heaven_blue_6"),
+	]
+	heaven_paths["red"] = [
+		get_node("/root/Node2D/Board/heaven_red_1"),
+		get_node("/root/Node2D/Board/heaven_red_2"),
+		get_node("/root/Node2D/Board/heaven_red_3"),
+		get_node("/root/Node2D/Board/heaven_red_4"),
+		get_node("/root/Node2D/Board/heaven_red_5"),
+		get_node("/root/Node2D/Board/heaven_red_6"),
+	]
+	heaven_paths["green"] = [
+		get_node("/root/Node2D/Board/heaven_green_1"),
+		get_node("/root/Node2D/Board/heaven_green_2"),
+		get_node("/root/Node2D/Board/heaven_green_3"),
+		get_node("/root/Node2D/Board/heaven_green_4"),
+		get_node("/root/Node2D/Board/heaven_green_5"),
+		get_node("/root/Node2D/Board/heaven_green_6"),
+	]
+
+	# Imprimir para verificar
+	for color in heaven_paths:
+		for i in range(heaven_paths[color].size()):
+			if heaven_paths[color][i] == null:
+				print("Nodo del cielo para ", color, " en la posición ", i, " es null")
 	path = [
 		$"/root/Node2D/Board/Square1",
 		$"/root/Node2D/Board/Square2",
@@ -105,10 +145,94 @@ func move_to_position(new_position):
 	print("Ficha movida a la posición: ", current_position, " (global_position: ", global_position, ")")  # depuración
 
 func move_steps(steps):
-	var target_position = current_position + steps
-	if target_position < path.size():
-		print("Moviendo de ", current_position, " a ", target_position) # Depuración
-		move_to_position(target_position)
+	var initial_position = current_position
+	var target_position = calculate_target_position(initial_position, steps)
+
+	# Si el objetivo está dentro del tablero normal
+	if target_position <= 68 and initial_position <= get_heaven_start_position(color):
+		for i in range(steps):
+			current_position += 1
+			if current_position > 68:
+				current_position = 1
+			global_position = path[current_position - 1].global_position
+			await get_tree().create_timer(0.5).timeout
+			print("Ficha movida a la posición: ", current_position)
+
+			# Si alcanzamos la posición para subir al cielo
+			if current_position == get_heaven_start_position(color):
+				var remaining_steps = steps - (i + 1)
+				move_to_heaven(remaining_steps)
+				return
+	else:
+		# Caso en que se mueve hacia el cielo directamente
+		var normal_steps = get_normal_steps_to_heaven(initial_position)
+		for i in range(min(steps, normal_steps)):
+			current_position += 1
+			if current_position > 68:
+				current_position = 1
+			global_position = path[current_position - 1].global_position
+			await get_tree().create_timer(0.5).timeout
+			print("Ficha movida a la posición: ", current_position)
+
+		var remaining_steps = steps - normal_steps
+		if remaining_steps > 0:
+			move_to_heaven(remaining_steps)
+
+func calculate_target_position(initial_position, steps):
+	var target_position = initial_position + steps
+
+	if target_position > 68:
+		target_position -= 68
+
+	return target_position
+
+func get_heaven_start_position(color):
+	if color == "yellow":
+		return 68
+	elif color == "blue":
+		return 17
+	elif color == "red":
+		return 34
+	elif color == "green":
+		return 51
+	return 68
+
+func get_normal_steps_to_heaven(initial_position):
+	var heaven_start_position = get_heaven_start_position(color)
+	if initial_position <= heaven_start_position:
+		return heaven_start_position - initial_position
+	else:
+		return 68 - initial_position + heaven_start_position
+
+func move_to_heaven(steps):
+	var path_heaven = heaven_paths.get(color, [])
+
+	if path_heaven.size() == 0:
+		print("No se encontraron nodos para el cielo del color: ", color)
+		return
+
+	var heaven_position = 0
+
+	for i in range(min(steps, path_heaven.size())):
+		await get_tree().create_timer(0.5).timeout
+		heaven_position += 1
+
+		# Asegúrate de que el nodo existe antes de acceder a su global_position
+		if path_heaven[heaven_position - 1] != null:
+			global_position = path_heaven[heaven_position - 1].global_position
+			print("Ficha movida al cielo en la posición: ", heaven_position)
+		else:
+			print("Nodo en path_heaven es null en la posición: ", heaven_position)
+			return
+
+		if heaven_position == path_heaven.size():
+			print("¡Ficha ha ganado!")
+			queue_free()  # Eliminar la ficha del tablero
+			return
+
+
+
+
 
 func release_from_jail():
 	in_jail = false

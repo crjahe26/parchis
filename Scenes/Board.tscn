@@ -481,3 +481,211 @@ position = Vector2(-477, 221)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JailGreen"]
 shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_1" type="Area2D" parent="."]
+position = Vector2(-128, 312)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_1"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_2" type="Area2D" parent="."]
+position = Vector2(-128, 267)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_2"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_3" type="Area2D" parent="."]
+position = Vector2(-128, 221)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_3"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_4" type="Area2D" parent="."]
+position = Vector2(-128, 175)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_4"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_5" type="Area2D" parent="."]
+position = Vector2(-128, 129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_5"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_6" type="Area2D" parent="."]
+position = Vector2(-128, 83)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_6"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_7" type="Area2D" parent="."]
+position = Vector2(-128, 38)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_7"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_yellow_8" type="Area2D" parent="."]
+position = Vector2(-127, -9)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_yellow_8"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_1" type="Area2D" parent="."]
+position = Vector2(314, -129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_1"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_2" type="Area2D" parent="."]
+position = Vector2(268, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_2"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_3" type="Area2D" parent="."]
+position = Vector2(221, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_3"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_4" type="Area2D" parent="."]
+position = Vector2(175, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_4"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_5" type="Area2D" parent="."]
+position = Vector2(129, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_5"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_6" type="Area2D" parent="."]
+position = Vector2(83, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_6"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_7" type="Area2D" parent="."]
+position = Vector2(37, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_7"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_blue_8" type="Area2D" parent="."]
+position = Vector2(-8, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_blue_8"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_1" type="Area2D" parent="."]
+position = Vector2(-128, -569)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_1"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_2" type="Area2D" parent="."]
+position = Vector2(-129, -524)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_2"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_3" type="Area2D" parent="."]
+position = Vector2(-129, -478)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_3"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_4" type="Area2D" parent="."]
+position = Vector2(-128, -432)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_4"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_5" type="Area2D" parent="."]
+position = Vector2(-129, -385)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_5"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_6" type="Area2D" parent="."]
+position = Vector2(-127, -339)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_6"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_7" type="Area2D" parent="."]
+position = Vector2(-128, -294)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_7"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_red_8" type="Area2D" parent="."]
+position = Vector2(-128, -249)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_red_8"]
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_1" type="Area2D" parent="."]
+position = Vector2(-569, -130)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_1"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_2" type="Area2D" parent="."]
+position = Vector2(-523, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_2"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_3" type="Area2D" parent="."]
+position = Vector2(-477, -129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_3"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_4" type="Area2D" parent="."]
+position = Vector2(-432, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_4"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_5" type="Area2D" parent="."]
+position = Vector2(-385, -127)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_5"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_6" type="Area2D" parent="."]
+position = Vector2(-340, -127)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_6"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_7" type="Area2D" parent="."]
+position = Vector2(-292, -128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_7"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="heaven_green_8" type="Area2D" parent="."]
+position = Vector2(-246, -129)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_8"]
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2ddmn")
