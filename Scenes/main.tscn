@@ -127,5 +127,8 @@ ok_button_text = "SI"
 dialog_text = "¿Deseas comer la ficha enemiga?"
 cancel_button_text = "NO"
 
+[node name="VictoryDialog" type="ConfirmationDialog" parent="Board"]
+dialog_text = "Esta ficha ha ganado. Selecciona otra ficha."
+
 [connection signal="canceled" from="Board/ConfirmationDialog" to="Board" method="_on_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="Board/ConfirmationDialog" to="Board" method="_on_confirmation_dialog_confirmed"]

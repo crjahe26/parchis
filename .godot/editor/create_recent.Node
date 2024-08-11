@@ -1,4 +1,5 @@
 ConfirmationDialog
+Popup
 Label
 Sprite2D
 CollisionShape2D

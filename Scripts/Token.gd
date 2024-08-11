@@ -6,7 +6,10 @@ signal token_selected
 var current_position = 0
 var path = []
 var in_jail = true
-var in_heaven = false
+var in_heaven = false  # Estado para indicar si la ficha está en el cielo
+var has_won = false  # Estado para indicar si la ficha ha ganado
+
+@onready var victory_dialog = $"../VictoryDialog"
 
 var start_positions = {
 	"yellow": 5,
@@ -32,6 +35,8 @@ func _ready():
 		get_node("/root/Node2D/Board/heaven_yellow_4"),
 		get_node("/root/Node2D/Board/heaven_yellow_5"),
 		get_node("/root/Node2D/Board/heaven_yellow_6"),
+		get_node("/root/Node2D/Board/heaven_yellow_7"),
+		get_node("/root/Node2D/Board/heaven_yellow_8")
 	]
 	heaven_paths["blue"] = [
 		get_node("/root/Node2D/Board/heaven_blue_1"),
@@ -40,6 +45,8 @@ func _ready():
 		get_node("/root/Node2D/Board/heaven_blue_4"),
 		get_node("/root/Node2D/Board/heaven_blue_5"),
 		get_node("/root/Node2D/Board/heaven_blue_6"),
+		get_node("/root/Node2D/Board/heaven_blue_7"),
+		get_node("/root/Node2D/Board/heaven_blue_8")
 	]
 	heaven_paths["red"] = [
 		get_node("/root/Node2D/Board/heaven_red_1"),
@@ -48,6 +55,8 @@ func _ready():
 		get_node("/root/Node2D/Board/heaven_red_4"),
 		get_node("/root/Node2D/Board/heaven_red_5"),
 		get_node("/root/Node2D/Board/heaven_red_6"),
+		get_node("/root/Node2D/Board/heaven_red_7"),
+		get_node("/root/Node2D/Board/heaven_red_8")
 	]
 	heaven_paths["green"] = [
 		get_node("/root/Node2D/Board/heaven_green_1"),
@@ -56,6 +65,8 @@ func _ready():
 		get_node("/root/Node2D/Board/heaven_green_4"),
 		get_node("/root/Node2D/Board/heaven_green_5"),
 		get_node("/root/Node2D/Board/heaven_green_6"),
+		get_node("/root/Node2D/Board/heaven_green_7"),
+		get_node("/root/Node2D/Board/heaven_green_8")
 	]
 
 	path = [
@@ -133,7 +144,13 @@ func _ready():
 
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
-		emit_signal("token_selected", self)
+		if has_won:
+			if victory_dialog != null:
+				victory_dialog.popup_centered()
+			else:
+				print("VictoryDialog no está asignado correctamente.")
+		else:
+			emit_signal("token_selected", self)
 
 func move_to_position(new_position):
 	current_position = new_position
@@ -142,7 +159,6 @@ func move_to_position(new_position):
 	else:
 		global_position = path[current_position - 1].global_position
 	print("Ficha movida a la posición: ", current_position, " (global_position: ", global_position, ")")  # depuración
-
 
 func move_steps(steps):
 	if in_heaven:
@@ -233,20 +249,17 @@ func move_to_heaven(steps):
 			print("Nodo en path_heaven es null en la posición: ", heaven_position)
 			return
 
-		if heaven_position == path_heaven.size():
-			print("¡Ficha ha ganado!")
-			return
+	# Si la ficha llega al final del cielo, marca como ganadora
+	if heaven_position >= path_heaven.size():
+		print("¡Ficha ha ganado!")
+		has_won = true  # La ficha ha ganado
+		current_position = path_heaven.size()  # Mantener la posición en el cielo
 
 	current_position = heaven_position  # Actualizar la posición actual en el cielo
 
-
-
-
-
-
 func release_from_jail():
 	in_jail = false
-	in_heaven = false
+	in_heaven = false  # Asegurarse de que no esté en el cielo
 	move_to_position(start_positions[color])
 
 func is_in_jail():
@@ -254,12 +267,10 @@ func is_in_jail():
 
 func send_to_jail():
 	in_jail = true
-	in_heaven = false 
+	in_heaven = false  # Asegurarse de que no esté en el cielo
+	has_won = false  # Resetear la condición de victoria
 	var jail_node = get_node(jail_nodes[color])
 	global_position = jail_node.global_position
-	#in_jail = true
-	#current_position = jail_positions[color]
-	#move_to_position(current_position)
 	print("Ficha enviada a la cárcel: ", color, " en posición: ", global_position)  # Depuración
 
 func check_collision():
