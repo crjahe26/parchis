@@ -689,3 +689,12 @@ position = Vector2(-246, -129)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="heaven_green_8"]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_2ddmn")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
+title = "\"¡El jugador [color] ha ganado!\""
+ok_button_text = "Reiniciar"
+cancel_button_text = "NO"
+
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]

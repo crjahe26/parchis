@@ -12,7 +12,9 @@ var dice_value_1: int = 1
 var dice_value_2: int = 1
 
 func roll():
+	#dice_value_1 = 6
 	dice_value_1 = randi() % 6 + 1
+	#dice_value_2 = 6
 	dice_value_2 = randi() % 6 + 1
 	update_dice_faces()
 	return dice_value_1 + dice_value_2

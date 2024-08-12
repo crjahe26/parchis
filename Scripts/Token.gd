@@ -229,33 +229,21 @@ func get_normal_steps_to_heaven(initial_position):
 		return 68 - initial_position + heaven_start_position
 
 func move_to_heaven(steps):
-	var path_heaven = heaven_paths.get(color, [])
-
-	if path_heaven.size() == 0:
-		print("No se encontraron nodos para el cielo del color: ", color)
-		return
-
-	var heaven_position = current_position  # Comenzamos desde la posición actual en el cielo
-
-	for i in range(min(steps, path_heaven.size() - heaven_position)):
+	var heaven_path = heaven_paths[color]
+	for i in range(steps):
+		current_position += 1
+		if current_position > 8:
+			current_position = 8
+		global_position = heaven_path[current_position - 1].global_position
 		await get_tree().create_timer(0.5).timeout
-		heaven_position += 1
+		print("Ficha movida al cielo a la posición: ", current_position)
 
-		# Asegúrate de que el nodo existe antes de acceder a su global_position
-		if path_heaven[heaven_position - 1] != null:
-			global_position = path_heaven[heaven_position - 1].global_position
-			print("Ficha movida al cielo en la posición: ", heaven_position)
-		else:
-			print("Nodo en path_heaven es null en la posición: ", heaven_position)
+		if current_position == 8:
+			in_heaven = true
+			if has_won:
+				emit_signal("token_selected", self)
 			return
 
-	# Si la ficha llega al final del cielo, marca como ganadora
-	if heaven_position >= path_heaven.size():
-		print("¡Ficha ha ganado!")
-		has_won = true  # La ficha ha ganado
-		current_position = path_heaven.size()  # Mantener la posición en el cielo
-
-	current_position = heaven_position  # Actualizar la posición actual en el cielo
 
 func release_from_jail():
 	in_jail = false
@@ -278,3 +266,8 @@ func check_collision():
 		if token != self and not token.is_in_jail() and token.current_position == self.current_position:
 			print("Ficha ", color, " ha comido a ficha ", token.color)
 			token.send_to_jail()
+func reset_token():
+	current_position = start_positions[color]
+	in_jail = true
+	in_heaven = false
+	global_position = path[current_position - 1].global_position

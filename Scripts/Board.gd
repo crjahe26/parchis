@@ -41,7 +41,9 @@ func _ready():
 	update_turn_label()
 
 func next_turn():
+	check_for_winner()
 	current_player = (current_player + 1) % 4
+	#current_player = (current_player)
 	update_turn_label()
 
 func roll_dice():
@@ -154,6 +156,7 @@ func _on_ConfirmationDialog_confirmed():
 
 func _on_ConfirmationDialog_canceled():
 	pending_token.move_steps(pending_steps)
+	_restart_game()
 	clear_pending_actions()
 
 func clear_pending_actions():
@@ -170,3 +173,36 @@ func allow_move_remaining_steps(color, remaining_steps):
 func move_to_position(token, position):
 	token.current_position = position
 	# Añade la lógica para actualizar visualmente la posición de la ficha si es necesario
+func check_for_winner():
+	var colors = ["yellow", "blue", "red", "green"]
+	for color in colors:
+		var all_in_heaven = true
+		for token in tokens:
+			if token.color == color and not token.in_heaven:
+				all_in_heaven = false
+				break
+		if all_in_heaven:
+			declare_winner(color)
+			return
+
+func declare_winner(color):
+	var player_color = color.capitalize()
+	confirmation_dialog.dialog_text = "¡El jugador " + player_color + " ha ganado!"
+	confirmation_dialog.get_ok_button().text = "Reiniciar"
+	confirmation_dialog.popup_centered()
+
+
+
+
+
+func _restart_game():
+	for token in tokens:
+		token.reset_token()
+	current_player = 0
+	update_turn_label()
+	dice_value_label.text = "Dado: "
+
+
+
+
+
